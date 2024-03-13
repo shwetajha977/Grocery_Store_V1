@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
+  content %}
+  <form class="vh-200 gradient-custom" style="font-family: serif;" method="POST">
+    <div class="container py-2 h-80">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-6 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+              <div class="mb-md-1 mt-md-1 pb-1">
+                <h2 class="fw-bold mb-2 text-uppercase" style="color:red">***Sign In***</h2>
+  
+                <p style="color:lightgreen" class="text-50 mb-5" >Please register with your details!</p>
+    <div class="form-group" style="font-family: Verdana;">
+      <label style="color:yellow; font-weight: 1000;" for="Name" >Name</label>
+      <input
+        minlength="3"
+        type="name"
+        id="name"
+        name="name"
+        class="form-control"
+        placeholder="Enter Username"
+      />
+      <label style="color:yellow; font-weight: 1000;" for="exampleInputEmail1" >Email Address</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        class="form-control"
+        placeholder="example@gmail.com"
+      />
+      <label style="color:yellow; font-weight: 1000;" for="password1">Password</label>
+      <input
+        type="password"
+        id="password1"
+        name="password1"
+        class="form-control"
+        placeholder="Enter Password"
+      />
+      <label style="color:yellow; font-weight: 1000;" for="password2">Password Again</label>
+      <input
+        type="password"
+        id="password2"
+        name="password2"
+        class="form-control"
+        placeholder="Enter Password Again"
+      />
+      <br/>
+      <div>
+        <label for="user_type" class="form-label" style="font-family: serif;  font-weight: 2000; color:lightgreen">You signing for: </label>
+        <select name="user_type">
+            <option value="is_manager">Manager</option>
+            <option value="is_customer">Customer</option>
+        </select>
+      </div>
+      <br/>
+      <br/>
+      <div align="center">
+        <button class="btn btn-primary" style="color:black" type="submit">REGISTER</button>
+      </div>
+    </div>
+    <div>
+      <p style="color:yellow; font-weight: 1000;" class="mb-0">Have already an account? <a href="/login" style=" color:lightblue; font-weight: 1000;"  class="text-50 fw-bold">Login here</a>
+      </p>
+    </div>
+  
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </form>
+  {% endblock %}
+  
+

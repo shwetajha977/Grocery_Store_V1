@@ -1,0 +1,103 @@
+{% extends "base.html" %} {% block title %} My Booked Products {% endblock %} {%
+block content %}
+<div
+  class="container-fluid align-self-center"
+  style="max-width: 100%; font-family: serif; color: black"
+>
+  <div class="container pt-4 pb-4">
+    <h1 class="text-center"><strong>***My Booked Products***</strong></h1>
+    <div class="row row-cols-auto">
+      {% for category in categories %} {% for buying in booking %} {%if
+      current_user.id == buying.B_user %} {%if category.C_id == buying.C_booked
+      %}
+      <div
+        class="column card"
+        style="width: 18rem; vertical-align: middle; background-color: pink"
+      >
+        <h3
+          class="card-title"
+          style="font-family: Verdana; font-weight: 800; color: black"
+          class="text-center"
+        >
+          Category: {{ category.C_name }}
+        </h3>
+          <div class="col" style="padding-top: 20px;">
+          <div class="card" style="width: 20rem; max-width: 100%; vertical-align:middle;">
+            <div class="text-center">
+                <img src="{{url_for('static', filename='1.jpg')}}" class="card-img-top">
+            </div>
+          </div>
+          </div>
+        {% for product in products %} {% if product.P_id == buying.P_booked %}
+        <div
+          class="row card"
+          style="width: 18rem; vertical-align: middle; background-color: pink"
+        >
+          <h5
+            class="card-title"
+            style="font-family: Verdana; font-weight: 800; color: black"
+            class="text-center"
+          >
+            Product: {{ product.P_name }}
+          </h5>
+          <h5
+            class="card-title"
+            style="font-family: Verdana; font-weight: 1200; color: black"
+            class="text-center"
+          >
+            Rate: Rs.{{ product.rate_per_unit}}/{{ product.unit}}
+          </h5>
+          <h5
+            class="card-title"
+            style="font-family: Verdana; font-weight: 1200; color: black"
+            class="text-center"
+          >
+            Quantity: {{ buying.total_quantity}} {{ product.unit}}
+          </h5>
+          <h5
+            class="card-title"
+            style="font-family: Verdana; font-weight: 1200; color: black"
+            class="text-center"
+          >
+            Cost: Rs.{{ buying.total_cost}}
+          </h5>
+        </div>
+        {% endif%} {% endfor %}
+      </div>
+      {% endif%} {% endif%} {% endfor %} {% endfor %}
+    </div>
+  </div>
+  <div
+    class="column card"
+    style="width: 18rem; vertical-align: middle; background-color: black"
+  >
+    {% set grand_total=namespace(value=0) %} 
+    {% for category in categories %} 
+    {% for buying in booking %} 
+    {%if current_user.id == buying.B_user %}
+    {%if category.C_id == buying.C_booked %}
+    {% for product in products %}
+    {% if product.P_id == buying.P_booked %} 
+    {% set grand_total.value = grand_total.value + buying.total_cost %} 
+    {%endif%}   
+    {% endfor %} 
+    {%endif%}   
+    {%endif%}   
+    {% endfor %}
+    {% endfor %}
+    <h3
+      class="card-title"
+      style="font-family: Verdana; font-weight: 1200; color: white"
+      class="text-center"
+    >
+      Grand Total: {{ grand_total.value}}
+    </h3>
+  </div>
+
+            <div>
+          <h2><button class="link-bg-dark btn btn-primary"><a  style="font-family: Verdana;  font-weight: 1000; color:black" href="/" class="link-bg-dark btn btn-primary" >Buy more products>></a></button><h2>
+        </div>
+</div>
+
+
+{% endblock %}

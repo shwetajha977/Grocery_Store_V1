@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}
+My Products
+{% endblock %}
+{% block content %}
+<div class="container-fluid align-self-center" style="max-width: 100%; font-family: serif; color:black">
+    <div class="container pt-4 pb-4">
+    <h1 class="text-center"><strong>***Welcome in Grocery Store***</strong></h1>
+      <h2 class="text-center">---Your profile page---</h2>
+        <div class="row row-cols-auto">
+        {% for category in categories %}
+        {% if current_user.id == category.C_user %}
+        <div class="column card" style="width: 18rem; vertical-align:middle;  background-color:pink">
+          <h3 class="card-title" style="font-family: Verdana;  font-weight: 800; color:black;" class="text-center">Category: {{ category.C_name }}</h3>
+
+          <div class="col" style="padding-top: 20px;">
+          <div class="card" style="width: 25rem; background-color:pink; max-width: 100%; vertical-align:middle;">
+          <div class="text-center">
+          <img src="{{url_for('static', filename='1.jpg')}}" class="card-img-top">                
+          <h6 class="card-title"><a  style="font-family: Verdana;  font-weight: 800; color:black;" href="/add_product" class="link-dark btn btn-primary">Add Product>></a></h6>
+          <h6 class="card-title"><a  style="font-family: Verdana;  font-weight: 800; color:white;" href="/delete_category/{{category.C_id}}" class="link-dark btn btn-danger">Delete Category>></a></h6>
+          <h6 class="card-title"><a  style="font-family: Verdana;  font-weight: 800; color:white;" href="/update_category/{{category.C_id}}" class="link-dark btn btn-secondary">Update Category>></a></h6>
+          </div>
+          </div>
+          </div>
+              {% for product in products %}
+                {% if category.C_id == product.P_C_id %}
+                    <div class="row card" style="width: 18rem; vertical-align:middle;  background-color:pink;">
+                    <h4 class="card-title" style="font-family: Verdana;  font-weight: 800; color:black"  class="text-center">Product: {{ product.P_name }}</h4>
+                    <h4 class="card-title" style="font-family: Verdana;  font-weight: 1200; color:black"  class="text-center">Rate: Rs.{{ product.rate_per_unit}}/{{ product.unit}}</h4>
+                    {% if product.quantity > 0 %}
+                    <h4 class="card-title" style="font-family: Verdana;  font-weight: 1200; color:black"  class="text-center">quantity: {{ product.quantity}} {{ product.unit}}</h4>
+                    {% else %}
+                    <h4 class="card-title" style="font-family: Verdana;  font-weight: 1200; color:black"  class="text-center">quantity: {{ product.quantity}}</h4>
+                    {% endif %}
+                    <h6 class="card-title"><a  style="font-family: Verdana;  font-weight: 800; color:white;" href="/delete_product/{{product.P_id}}" class="link-dark btn btn-danger">Delete Product>></a></h6>
+                    <h6 class="card-title"><a  style="font-family: Verdana;  font-weight: 800; color:white;" href="/update_product/{{product.P_id}}" class="link-dark btn btn-primary">Update Product>></a></h6>
+                    </div>
+                {% endif%}
+              {% endfor %}
+          </div>
+          {% endif%}
+        {% endfor %}
+        </div>
+      <br/>
+      <br/>
+        <div>
+          <h3><button class="link-bg-dark btn btn-primary"><a  style="font-family: Verdana;  font-weight: 800; color:black" href="/add_category" class="link-bg-dark btn btn-primary" >Add Category>></a></button><h3>
+        </div>
+    </div>
+</div>
+{% endblock %}

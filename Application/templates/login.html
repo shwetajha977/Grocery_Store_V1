@@ -1,0 +1,76 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
+%}
+<form class="vh-100 gradient-custom" style="font-family: serif" method="POST">
+  <div class="container py-5 h-90">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-6 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 2rem">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2
+                style="color: red; font-weight: 1200"
+                class="fw-bold mb-2 text-uppercase"
+              >
+                Login
+              </h2>
+
+              <p
+                style="color: lightgreen; font-weight: 1200"
+                class="text-50 mb-4"
+              >
+                Please enter your login id and password!
+              </p>
+
+              <label
+                style="font-family: Verdana; font-weight: 1200; color: yellow"
+                for="email"
+                >Email Address</label
+              >
+              <input
+                type="text"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="example@gmail.com"
+              />
+
+              <label
+                style="font-family: Verdana; font-weight: 1200; color: yellow"
+                for="password"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                placeholder="Enter Password"
+              />
+              <br />
+              <button
+                style="font-family: serif; font-weight: 1200"
+                class="btn btn-primary"
+                type="submit"
+              >
+                LOGIN
+              </button>
+            </div>
+
+            <div>
+              <p style="font-family: serif; color: yellow" class="mb-0">
+                Don't have an account?
+                <a
+                  href="/signing"
+                  style="color: lightblue; font-weight: 1200"
+                  class="text-50 fw-bold"
+                  >Sign In</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}

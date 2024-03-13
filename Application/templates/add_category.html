@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+
+{% block title %} 
+Add Category
+{% endblock %}
+
+{% block content %}
+<div class="container py-2 h-80">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-6 col-lg-6 col-xl-5">
+      <div class="card bg-dark text-white" style="border-radius: 2rem;">
+        <div class="card-body p-2 text-center">
+          <div class="mb-md-2 mt-md-2 pb-2">
+            <h3 style="display: flex; justify-content: center;align-items: center;padding-top:5%; font-weight:700; font-family: serif;  font-weight: 1200; color:red">Creating a new Category</h3>
+              <div class="form" style="display: flex; justify-content: center;align-items: center;padding-top:10px">
+                <form method = "POST">
+                    <div class="mb-3">
+                      <label for="C_name" class="form-label" style="font-family: serif;  font-weight: 2000; color:lightgreen">Category Name: </label>
+                      <input type="Text" class="form-control" placeholder="Name of category which product do you want..." name="name">
+                    </div>
+                    <button type="submit" class="btn btn-primary " style="font-family: serif;  font-weight: 1200; color:white">Save</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
